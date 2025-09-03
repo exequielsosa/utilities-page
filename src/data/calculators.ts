@@ -43,5 +43,12 @@ export const CALCULATORS: Calc[] = [
     description: 'Calculá el retorno de inversión de un inmueble.',
     href: '/calculadoras/roi',
     category: 'Inmobiliario',
+  },
+  {
+    id: 'sac',
+    title: 'Aguinaldo (SAC)',
+    description: 'Calculá el aguinaldo proporcional según días trabajados.',
+    href: '/calculadoras/sac',
+    category: 'Utilidades',
   }
 ];
