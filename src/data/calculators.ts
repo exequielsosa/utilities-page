@@ -37,4 +37,11 @@ export const CALCULATORS: Calc[] = [
     href: '/calculadoras/cbu-cvu',
     category: 'Finanzas',
   },
+  {
+    id: 'roi',
+    title: 'ROI Inmobiliario',
+    description: 'Calculá el retorno de inversión de un inmueble.',
+    href: '/calculadoras/roi',
+    category: 'Inmobiliario',
+  }
 ];
