@@ -1,15 +1,9 @@
-import Head from "next/head";
 import { CalculatorCard } from "@/components/atoms";
 import { CALCULATORS } from "@/data/calculators";
 
 export const HomeScreen = () => {
   return (
     <>
-      <Head>
-        <title>Calculadoras | Utilities</title>
-        <meta name="description" content="Calculadoras simples y útiles" />
-      </Head>
-
       <main className="container" style={{ paddingBlock: "24px" }}>
         <header style={{ marginBottom: "16px" }}>
           <h1>Calculadoras</h1>

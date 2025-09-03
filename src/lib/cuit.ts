@@ -1,3 +1,4 @@
+
 export type Gender = 'H' | 'M' | 'X';
 
 const WEIGHTS = [5,4,3,2,7,6,5,4,3,2];
@@ -7,12 +8,21 @@ const PREFIX_BY_GENDER: Record<Gender, number> = {
   X: 24, // No binario (X)
 };
 
+export const GENDER_LABEL: Record<Gender, string> = {
+  H: 'Hombre',
+  M: 'Mujer',
+  X: 'X',
+};
+
+export function getGenderPrefix(g: Gender): number {
+  return PREFIX_BY_GENDER[g];
+}
+
 export function onlyDigits(s: string) {
   return (s || '').replace(/\D+/g, '');
 }
 
 export function formatCuitMask(digitsOnly: string) {
-  // Recibe solo dígitos (parciales), agrega guiones en 2 y 10
   const d = onlyDigits(digitsOnly).slice(0, 11);
   if (d.length <= 2) return d;
   if (d.length <= 10) return `${d.slice(0, 2)}-${d.slice(2)}`;
@@ -47,7 +57,7 @@ export function generateCUITFromDNI(dni: string, gender: Gender): string | null 
   const d = onlyDigits(dni);
   if (d.length < 7 || d.length > 8) return null;
   const pref = PREFIX_BY_GENDER[gender];
-  const base10 = `${pref}${d.padStart(8, '0')}`; // 10 dígitos (2 prefijo + 8 DNI)
+  const base10 = `${pref}${d.padStart(8, '0')}`;
   const dv = calcCheckDigit(base10);
   const full = base10 + String(dv);
   return formatCUIT(full);

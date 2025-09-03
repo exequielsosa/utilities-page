@@ -30,4 +30,11 @@ export const CALCULATORS: Calc[] = [
     href: '/calculadoras',
     category: 'Finanzas',
   },
+  {
+    id: 'cbu-cvu',
+    title: 'CBU / CVU',
+    description: 'Validá un CBU o CVU (22 dígitos) con verificación oficial por módulo 10.',
+    href: '/calculadoras/cbu-cvu',
+    category: 'Finanzas',
+  },
 ];
