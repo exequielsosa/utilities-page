@@ -50,5 +50,12 @@ export const CALCULATORS: Calc[] = [
     description: 'Calculá el aguinaldo proporcional según días trabajados.',
     href: '/calculadoras/sac',
     category: 'Utilidades',
+  },
+  {
+    id: 'liquidacion',
+    title: 'Liquidación Final',
+    description: 'Calculá la liquidación final por despido o renuncia.',
+    href: '/calculadoras/liquidacion',
+    category: 'Utilidades',
   }
 ];

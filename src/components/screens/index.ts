@@ -3,3 +3,4 @@ export * from "./CuitScreen";
 export * from "./CbuScreen";
 export * from "./RoiScreen";
 export * from "./SacScreen";
+export * from "./LiquidacionScreen";
