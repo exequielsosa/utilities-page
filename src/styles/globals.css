@@ -1,42 +1,195 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Reset muy breve */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  height: 100%;
 }
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Tipografía base (podés cambiarla cuando quieras) */
+:root {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+    Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+}
+
+/* -------- PALETA (MUI-like) ---------------------------------------- */
+:root {
+  /* Principales */
+  --primary: #1976d2; /* blue 700 */
+  --primary-contrast: #ffffff;
+
+  --secondary: #9c27b0; /* purple 500 */
+  --secondary-contrast: #ffffff;
+
+  /* Feedback */
+  --success: #2e7d32; /* green 800 */
+  --warning: #ed6c02; /* orange ~800 */
+  --error: #d32f2f; /* red 700 */
+  --info: #0288d1; /* lightBlue 700 */
+
+  /* Grises mínimos */
+  --grey-50: #fafafa;
+  --grey-200: #eeeeee;
+  --grey-300: #e0e0e0;
+  --grey-600: #757575;
+  --grey-900: #212121;
+
+  /* Semánticos */
+  --bg-body: var(--grey-50);
+  --bg-paper: #ffffff;
+  --text-primary: rgba(0, 0, 0, 0.87);
+  --text-secondary: rgba(0, 0, 0, 0.6);
+  --divider: rgba(0, 0, 0, 0.12);
+
+  /* Layout / misc */
+  --radius: 12px;
+  --shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --container-max: 1120px;
+
+  /* Espaciado corto y claro */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+}
+
+/* -------- Base global ----------------------------------------------- */
+body {
+  background: var(--bg-body);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 a {
-  color: inherit;
+  color: var(--primary);
   text-decoration: none;
 }
+a:hover {
+  text-decoration: underline;
+}
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Focus consistente y accesible */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* -------- Helpers de layout ----------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.card {
+  background: var(--bg-paper);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Titulares simples */
+h1,
+h2,
+h3 {
+  margin: 0 0 var(--space-3);
+  line-height: 1.2;
+  font-weight: 700;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.125rem;
+}
+
+/* -------- Formularios ------------------------------------------------ */
+input,
+select,
+textarea,
+button {
+  font: inherit;
+  color: inherit;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  background: var(--bg-paper);
+  border: 1px solid var(--grey-300);
+  color: var(--text-primary);
+  border-radius: 4px;
+  padding: 10px 12px;
+}
+input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* -------- Botones ---------------------------------------------------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary);
+  color: var(--primary-contrast);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: transform 0.06s ease, filter 0.2s ease;
+}
+.button:hover {
+  filter: brightness(1.05);
+}
+.button:active {
+  transform: translateY(1px);
+}
+
+.button--secondary {
+  background: var(--secondary);
+  color: var(--secondary-contrast);
+}
+
+.button--outlined {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Divider utilitario */
+.hr {
+  height: 1px;
+  background: var(--divider);
+  border: 0;
+  margin: var(--space-6) 0;
+}
+
+/* Accesibilidad */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+  overflow: hidden;
 }

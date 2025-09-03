@@ -1,0 +1,13 @@
+.card {
+  @extend .card; /* usa la clase .card del globals.scss */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.header { display: flex; flex-direction: column; gap: 6px; }
+.category { font-size: 12px; color: var(--text-secondary); }
+.title { font-size: 1.125rem; font-weight: 700; margin: 0; }
+.desc { color: var(--text-secondary); margin: 0; }
+.footer { margin-top: auto; }

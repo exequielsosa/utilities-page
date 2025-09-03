@@ -1,0 +1,33 @@
+export type Calc = {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  category: 'Inmobiliario' | 'Finanzas' | 'Utilidades';
+  tags?: string[];
+};
+
+export const CALCULATORS: Calc[] = [
+  {
+    id: 'cuit',
+    title: 'Validador / Generador CUIT',
+    description: 'Validá un CUIT o generálo desde DNI con dígito verificador.',
+    href: '/calculadoras/cuit',
+    category: 'Utilidades',
+    tags: ['AFIP', 'DNI'],
+  },
+  {
+    id: 'alquileres',
+    title: 'Aumento de alquiler (ICL/IPC/CER)',
+    description: 'Calculá el ajuste de contrato por índice.',
+    href: '/calculadoras', // placeholder
+    category: 'Inmobiliario',
+  },
+  {
+    id: 'plazo-fijo',
+    title: 'Plazo fijo (TNA / UVA)',
+    description: 'Simulá rendimiento tradicional o UVA.',
+    href: '/calculadoras',
+    category: 'Finanzas',
+  },
+];
