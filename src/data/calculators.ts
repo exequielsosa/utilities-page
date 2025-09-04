@@ -20,14 +20,14 @@ export const CALCULATORS: Calc[] = [
     id: 'alquileres',
     title: 'Aumento de alquiler (ICL/IPC/CER)',
     description: 'Calculá el ajuste de contrato por índice.',
-    href: '/calculadoras', // placeholder
+    href: '/calculadoras/aumento-alquiler',
     category: 'Inmobiliario',
   },
   {
     id: 'plazo-fijo',
     title: 'Plazo fijo (TNA / UVA)',
     description: 'Simulá rendimiento tradicional o UVA.',
-    href: '/calculadoras',
+    href: '/calculadoras/plazo-fijo',
     category: 'Finanzas',
   },
   {
