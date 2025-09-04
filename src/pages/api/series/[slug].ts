@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 // Fuerzo runtime Node en Next Pages (evita Edge runtimes que pueden
 // bloquear fetch cross-origin en local)
-export const config = { runtime: "nodejs" as const };
+export const config = { runtime: "nodejs"};
 
 type Point = { date: string; value: number };
 type Out = {
@@ -57,6 +57,7 @@ async function safeFetchJson(url: string) {
 }
 
 // Descarga y normaliza puntos (hoy la API entrega top-level "data")
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function fetchSeriesPoints(id: string, _startISO: string): Promise<Point[]> {
   // convierte número o string con coma a number
   const toNum = (v: any): number => {
@@ -79,7 +80,7 @@ async function fetchSeriesPoints(id: string, _startISO: string): Promise<Point[]
     points = j.data
       .filter((row: any) => Array.isArray(row) && row.length >= 2)
       .map((row: any[]) => ({ date: String(row[0]), value: toNum(row[1]) }))
-      .filter((p) => Number.isFinite(p.value));
+      .filter((p: { value: unknown; }) => Number.isFinite(p.value));
   }
 
   // Fallbacks por si algún día vuelven a "series[...]"
@@ -91,19 +92,19 @@ async function fetchSeriesPoints(id: string, _startISO: string): Promise<Point[]
           date: String(d),
           value: toNum(s.values[i]),
         }))
-        .filter((p) => Number.isFinite(p.value));
+        .filter((p: { value: unknown; }) => Number.isFinite(p.value));
     } else if (Array.isArray(s?.data)) {
       points = s.data
         .filter((row: any) => Array.isArray(row) && row.length >= 2)
         .map((row: any[]) => ({ date: String(row[0]), value: toNum(row[1]) }))
-        .filter((p) => Number.isFinite(p.value));
+        .filter((p: { value: unknown; }) => Number.isFinite(p.value));
     } else if (Array.isArray(s?.index) && Array.isArray(s?.serie)) {
       points = s.index
         .map((d: any, i: number) => ({
           date: String(d),
           value: toNum(s.serie[i]),
         }))
-        .filter((p) => Number.isFinite(p.value));
+        .filter((p: { value: unknown; }) => Number.isFinite(p.value));
     }
   }
 

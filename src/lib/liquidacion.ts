@@ -225,7 +225,7 @@ export function calcularLiquidacion(i: InputsLiquidacion): ResultadoLiquidacion 
   };
   if (aplicarSACVac) detalle['SAC sobre vacaciones no gozadas'] = sacVac;
 
-  let resultado: ResultadoLiquidacion = {
+  const resultado: ResultadoLiquidacion = {
     diasTrabajadosMes: dTrabMes,
     salarioDiasTrabajados: salarioDias,
     otrosHaberesMesProporc: otrosProp,

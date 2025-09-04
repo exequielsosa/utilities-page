@@ -65,7 +65,7 @@ export const RoiScreen = () => {
     setResult(null);
   };
 
-  const handleChange: RoiFormState extends infer T
+  const handleChange: RoiFormState extends unknown
     ? <K extends keyof RoiFormState>(key: K, value: string) => void
     : never = (key, value) => {
     setForm((f) => ({ ...f, [key]: value }));
